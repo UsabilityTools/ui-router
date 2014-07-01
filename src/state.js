@@ -763,7 +763,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
         location: true, inherit: false, relative: null, notify: true, reload: false, $retry: false
       }, options || {});
 
-      if (isString(options.relative)) {
+      if (isDefined(options.relative)) {
+        // try to get proper state object if its name or configuration object is passed
         options.relative = findState(options.relative, $state.$current);
       }
 
